@@ -1,3 +1,4 @@
 /captcha[12345]/model/
 .idea/*
 .idea/vcs.xml
+/captcha[12345]/__pycache__/
