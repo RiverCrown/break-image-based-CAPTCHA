@@ -105,7 +105,6 @@ def _get_triplet_mask(labels):
 
     distinct_indices = tf.logical_and(tf.logical_and(i_not_equal_j, i_not_equal_k), j_not_equal_k)
 
-
     # Check if labels[i] == labels[j] and labels[i] != labels[k]
     label_equal = tf.equal(tf.expand_dims(labels, 0), tf.expand_dims(labels, 1))
     i_equal_j = tf.expand_dims(label_equal, 2)

@@ -21,55 +21,59 @@ TRAIN_DATA_PATH = params['trainDataDir']
 TOTAL_COUNT = params['totalCount']
 SAVE_DIR = params['presolvedDataSaveDir']
 
-def remove_dot(image, epoch = 3):
+
+def remove_dot(image, epoch=3):
     image_temp = image.copy()
     h, w = image_temp.shape
 
     for x in range(h):
-        image_temp[x, w-1] = 1
+        image_temp[x, w - 1] = 1
         image_temp[x, 0] = 1
     for y in range(w):
         image_temp[0, y] = 1
-        image_temp[h-1, y] = 1
+        image_temp[h - 1, y] = 1
 
     step = 0
     while step < epoch:
-        for y in range(1, w-1):
-            for x in range(1, h-1):
+        for y in range(1, w - 1):
+            for x in range(1, h - 1):
                 count = 0
-                if image_temp[x, y-1] > 0.94:
+                if image_temp[x, y - 1] > 0.94:
                     count = count + 1
-                if image_temp[x, y+1] > 0.94:
+                if image_temp[x, y + 1] > 0.94:
                     count = count + 1
-                if image_temp[x-1, y] > 0.94:
+                if image_temp[x - 1, y] > 0.94:
                     count = count + 1
-                if image_temp[x+1, y] > 0.94:
+                if image_temp[x + 1, y] > 0.94:
                     count = count + 1
-                if image_temp[x+1, y+1] > 0.94:
+                if image_temp[x + 1, y + 1] > 0.94:
                     count = count + 1
-                if image_temp[x+1, y-1] > 0.94:
+                if image_temp[x + 1, y - 1] > 0.94:
                     count = count + 1
-                if image_temp[x-1, y+1] > 0.94:
+                if image_temp[x - 1, y + 1] > 0.94:
                     count = count + 1
-                if image_temp[x-1, y-1] > 0.94:
+                if image_temp[x - 1, y - 1] > 0.94:
                     count = count + 1
                 if count > 6:
                     image_temp[x, y] = 1
         step += 1
     return image_temp
 
+
 def split_captcha(image):
     split_img = []
     for i in range(4):
-        img = image[:,i*37:(i+1)*37]
+        img = image[:, i * 37:(i + 1) * 37]
         split_img.append(img)
     return split_img
+
 
 def dilation_and_erosion(img):
     dil = morphology.dilation(img, square(2))
     dil = remove_dot(dil)
     ero = morphology.erosion(dil, square(2))
     return ero
+
 
 def solve_img():
     for i in range(TOTAL_COUNT):
@@ -85,5 +89,6 @@ def solve_img():
             img = color.rgb2gray(io.imread(TRAIN_DATA_PATH + img_dir + img_name))
             img = dilation_and_erosion(img)
             io.imsave(SAVE_DIR + img_dir + img_name, img)
-                  
+
+
 solve_img()
