@@ -1,2 +1,3 @@
 /captcha[12345]/model/
 .idea/*
+.gitignore
