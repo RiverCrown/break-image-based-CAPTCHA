@@ -1,0 +1,7 @@
+{
+    "trainDataDir": "/Users/rivercrown/学习各种材料/服务外包/A16-浪潮-验证码样本数据 (2)/验证码样本数据/data-5/train-5/",
+    "totalCount": 100,
+    "presolvedDataSaveDir": "pre_solved/",
+    "batchSize": 25,
+    "modelDir": "model/"
+}

@@ -1,0 +1,6 @@
+{
+    "imageDataDir": "/home/rivercrown/try/train-2/",
+    "totalCount": 100,
+    "batchSize": 10,
+    "modelDir": "model/"
+}

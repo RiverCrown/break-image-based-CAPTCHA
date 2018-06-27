@@ -1,0 +1,7 @@
+{
+    "trainDataDir": "/home/rivercrown/try/train/",
+    "totalCount": 100,
+    "presolvedDataSaveDir": "pre_solved/",
+    "batchSize": 25,
+    "modelDir": "model/"
+}

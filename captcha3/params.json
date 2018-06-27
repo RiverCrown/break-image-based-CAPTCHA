@@ -1,0 +1,6 @@
+{
+    "imageDataDir": "~/images.png",
+    "totalCount": 1,
+    "batchSize": 1,
+    "modelDir": "model/"
+}
